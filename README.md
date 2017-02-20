@@ -1,24 +1,28 @@
 # Dribbble
 
-This project uses AJAX to request the most recent images (aka shots) from Dribbble from the categories "Debut", "Team" and "Playoffs" and inserts them into the app webpage under their corresponding category tab.
+This project uses AJAX to request the most recent images (aka shots) from Dribbble from the categories "Debuts", "Team Shots" and "Playoffs" and inserts them into the app webpage under their corresponding category tab.
+
+![dribbbs](https://raw.githubusercontent.com/thaitwo/dribbble/master/assets/dribbbs.png)
 
 ## Create Dribbble Account
 
-In order for this appplication to run, you must create an account on Dribbble to get a Client Access Token.
+In order for this appplication to run, you must create an account on [Dribbble](https://dribbble.com/) to get a Client Access Token.
 
 Once you've created an account, you need to register this application. To do this:
 
 **STEP 1.** Hover over your avatar icon in the top right corner (next to the search box)
 
-**STEP 2.** Click on "Account Settings"
+**STEP 2.** Click on "Account Settings" in the dropdown menu
 
 **STEP 3.** Click on the "Applications" tab on the left sidebar menu
 
 **STEP 4.** Click the button "Register a new application"
 
-**STEP 5.** Fill out the fields and click "Register application". Here is how fields look like:
+**STEP 5.** Fill out the fields and click "Register application". You can insert placeholder URLs into the "Website URL" and "Callback URL" fields.
 
+Here are how my fields look like:
 
+![register-app](https://raw.githubusercontent.com/thaitwo/dribbble/master/assets/dribbble-register-app.png)
 
 Once you've completed, you should see at the bottom of your application page your "Client Access Token".
 
@@ -28,9 +32,9 @@ This is the code that you will use to input into the **"config.js"** file in you
 
 This file must exist for this application to run.
 
-In your root directory, create a file and name is **config.js**
+In your root directory, create a file and name it **config.js**
 
-In that file include the following code:
+In that file copy and paste the following code:
 
 ```
 var CONFIG = {

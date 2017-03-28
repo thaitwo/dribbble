@@ -1,5 +1,7 @@
 (function() {
 
+  const access_token = 'b0b86bea665b3d2224f6801878471ab2897740bc4eb69f5105027c87fc114908';
+
   // STORE DATA FROM AJAX REQUEST
   var store = {
     teams: null,
@@ -68,7 +70,7 @@
       $.ajax({
         url: 'https://api.dribbble.com/v1/shots',
         data: {
-          access_token: CONFIG.access_token,
+          access_token: access_token,
           list: list
         },
         dataType: 'jsonp'

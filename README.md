@@ -2,7 +2,11 @@
 
 This project uses AJAX to request the most recent images (aka shots) from Dribbble from the categories "Debuts", "Team Shots" and "Playoffs" and inserts them into the app webpage under their corresponding category tab.
 
-![dribbbs](https://raw.githubusercontent.com/thaitwo/dribbble/master/assets/dribbbs.png)
+## View Project
+
+[View Project](https://thaitwo.github.io/dribbble/ "Ajax Dribbble")
+
+[![Ajax Dribbble](https://raw.githubusercontent.com/thaitwo/dribbble/master/assets/dribbbs.png)](https://thaitwo.github.io/dribbble/)
 
 ## Create Dribbble Account
 

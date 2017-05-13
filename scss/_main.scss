@@ -8,70 +8,98 @@ body {
 
 /* NAVIGATION =========================================== */
 nav {
-  background: #37474F;
+  // background: #37474F;
+  background-image: linear-gradient(to right, #243949 0%, #517fa4 100%);
+  // background-image: linear-gradient(45deg, #ee9ca7 0%, #ffdde1 100%);
   padding: 15px;
 
-  & ul {
+  ul {
     float: left;
     margin-left: 75px;
   }
 
-  & ul li {
+  ul li {
     float: left;
     margin-right: 10px;
   }
 
-  & ul li a {
+  ul li a {
+    background-color: rgba(#fff, .15);
+    color: rgba(#FFF,.8);
+    border-radius: 3px;
     display: block;
+    font-size: 14px;
+    letter-spacing: .5px;
     line-height: 30px;
     padding: 2px 18px;
-    background: #546E7A;
     text-decoration: none;
-    color: #ffffff;
-    font-size: 14px;
-    border-radius: 3px;
+
+    &:hover {
+      background-color: rgba(#fff, .3);
+    }
   }
 
-  & ul li a.selected {
+  ul li a.selected {
     background: #FF7043;
-    color: #FFF;
+    color: #FFFFFF;
   }
 }
 
 
 /* CARDS =========================================== */
-#cards {
+.cards-wrapper {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
   padding: 40px;
 
-  & .card {
-    background: #CFD8DC;
-    float: left;
-    padding: 15px;
-    margin: 50px;
-    display: block;
-    height: 168px;
-    width: 200px;
+  .card {
+    background: rgba(#263238, .05);
     border-radius: 3px;
-  }
-
-  & .img {
-    width: 200px;
-    height: 150px;
     display: block;
-    text-align: center;
-    line-height: 150px;
+    float: left;
+    margin: 20px;
+    padding: 15px;
+    transition: all .4s;
+    width: 240px;
+
+    &:hover {
+      box-shadow: 0 0 8px rgba(0,0,0,.12);
+      box-shadow: 0 8px 16px rgba(0,0,0,.24);
+    }
+
+    img {
+      display: block;
+      line-height: 150px;
+      text-align: center;
+      width: 100%;
+    }
   }
 
-  & .card ul li {
-    display: inline;
-    font-size: 11px;
-    color: #546E7A;
-    margin-right: 10px;
+  .card ul {
+    padding-top: 5px;
+
+    li {
+      color: rgba(#263238, .4);
+      display: inline;
+      font-size: 11px;
+      margin-right: 5px;
+
+      span {
+        font-weight: bold;
+        padding-right: 4px;
+      }
+
+      i {
+        padding-right: 3px;
+      }
+    }
   }
 
-  & p {
-    text-align: center;
+  p {
     color: #607D8B;
     font-size: 20px;
+    text-align: center;
   }
 }

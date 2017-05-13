@@ -104,8 +104,9 @@
     createImageCard: function(image) {
       // GET SPECIFIC DATA from store{} FOR EACH SHOT AND INSERT INTO CARD TEMPLATE
       var card = this.createCard({
-        image_teaser_url: image.images.teaser,
+        image_url: image.images.normal,
         title: image.title,
+        views_count: image.views_count,
         likes_count: image.likes_count,
         comments_count: image.comments_count
       })

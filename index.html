@@ -6,7 +6,7 @@
   <title>Dribbble Shots</title>
   <meta name="viewport" content="width=device-width">
   <link rel="stylesheet" href="css/style.css">
-
+  <script src="https://use.fontawesome.com/c05b0eed4c.js"></script>
 </head>
 <body>
 
@@ -19,7 +19,7 @@
     <div class="clear"></div>
   </nav>
 
-  <section id="cards">
+  <section id="cards" class="cards-wrapper">
       <!-- CARDS GO HERE -->
   </section>
 
@@ -27,11 +27,12 @@
   <!-- CARD TEMPLATE -->
   <script type="text/template" id="template_card">
     <figure class="card">
-        <img src="<%= image_teaser_url %>" alt="<%= title %>"/>
+        <img src="<%= image_url %>" alt="<%= title %>"/>
         <figcaption>
             <ul>
-              <li><%= likes_count %> likes</li>
-              <li><%= comments_count %> comments</li>
+              <li><span><%= views_count %></span>views</li>
+              <li><span><%= likes_count %></span>likes</li>
+              <li><span><%= comments_count %></span>comments</li>
             </ul>
         </figcaption>
     </figure>

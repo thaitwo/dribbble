@@ -53,7 +53,7 @@ body {
 
 /* NAVIGATION =========================================== */
 nav {
-  background: #37474F;
+  background-image: linear-gradient(to right, #243949 0%, #517fa4 100%);
   padding: 15px; }
   nav ul {
     float: left;
@@ -62,44 +62,60 @@ nav {
     float: left;
     margin-right: 10px; }
   nav ul li a {
+    background-color: rgba(255, 255, 255, 0.15);
+    color: rgba(255, 255, 255, 0.8);
+    border-radius: 3px;
     display: block;
+    font-size: 14px;
+    letter-spacing: .5px;
     line-height: 30px;
     padding: 2px 18px;
-    background: #546E7A;
-    text-decoration: none;
-    color: #ffffff;
-    font-size: 14px;
-    border-radius: 3px; }
+    text-decoration: none; }
+    nav ul li a:hover {
+      background-color: rgba(255, 255, 255, 0.3); }
   nav ul li a.selected {
     background: #FF7043;
-    color: #FFF; }
+    color: #FFFFFF; }
 
 /* CARDS =========================================== */
-#cards {
+.cards-wrapper {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
   padding: 40px; }
-  #cards .card {
-    background: #CFD8DC;
+  .cards-wrapper .card {
+    background: rgba(38, 50, 56, 0.05);
+    border-radius: 3px;
+    display: block;
     float: left;
+    margin: 20px;
     padding: 15px;
-    margin: 50px;
-    display: block;
-    height: 168px;
-    width: 200px;
-    border-radius: 3px; }
-  #cards .img {
-    width: 200px;
-    height: 150px;
-    display: block;
-    text-align: center;
-    line-height: 150px; }
-  #cards .card ul li {
-    display: inline;
-    font-size: 11px;
-    color: #546E7A;
-    margin-right: 10px; }
-  #cards p {
-    text-align: center;
+    transition: all .4s;
+    width: 240px; }
+    .cards-wrapper .card:hover {
+      box-shadow: 0 0 8px rgba(0, 0, 0, 0.12);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.24); }
+    .cards-wrapper .card img {
+      display: block;
+      line-height: 150px;
+      text-align: center;
+      width: 100%; }
+  .cards-wrapper .card ul {
+    padding-top: 5px; }
+    .cards-wrapper .card ul li {
+      color: rgba(38, 50, 56, 0.4);
+      display: inline;
+      font-size: 11px;
+      margin-right: 5px; }
+      .cards-wrapper .card ul li span {
+        font-weight: bold;
+        padding-right: 4px; }
+      .cards-wrapper .card ul li i {
+        padding-right: 3px; }
+  .cards-wrapper p {
     color: #607D8B;
-    font-size: 20px; }
+    font-size: 20px;
+    text-align: center; }
 
 /*# sourceMappingURL=style.css.map */

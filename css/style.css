@@ -53,13 +53,12 @@ body {
 
 /* NAVIGATION =========================================== */
 nav {
-  background-image: linear-gradient(to right, #243949 0%, #517fa4 100%);
+  background-color: #243949;
   padding: 15px; }
   nav ul {
-    float: left;
-    margin-left: 75px; }
+    text-align: center; }
   nav ul li {
-    float: left;
+    display: inline-block;
     margin-right: 10px; }
   nav ul li a {
     background-color: rgba(255, 255, 255, 0.15);
@@ -70,29 +69,31 @@ nav {
     letter-spacing: .5px;
     line-height: 30px;
     padding: 2px 18px;
-    text-decoration: none; }
+    text-decoration: none;
+    transition: all .3s; }
     nav ul li a:hover {
-      background-color: rgba(255, 255, 255, 0.3); }
+      background-color: rgba(255, 255, 255, 0.2); }
   nav ul li a.selected {
     background: #FF7043;
     color: #FFFFFF; }
 
 /* CARDS =========================================== */
 .cards-wrapper {
+  background-image: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: space-around;
+  justify-content: center;
   padding: 40px; }
   .cards-wrapper .card {
-    background: rgba(38, 50, 56, 0.05);
+    background: #FFFFFF;
     border-radius: 3px;
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.12);
     display: block;
-    float: left;
-    margin: 20px;
+    margin: 15px;
     padding: 15px;
     transition: all .4s;
-    width: 240px; }
+    width: 235px; }
     .cards-wrapper .card:hover {
       box-shadow: 0 0 8px rgba(0, 0, 0, 0.12);
       box-shadow: 0 8px 16px rgba(0, 0, 0, 0.24); }

@@ -6,7 +6,9 @@
   var store = {
     teams: null,
     playoffs: null,
-    debuts: null
+    debuts: null,
+    animated: null,
+    rebounds: null
   }
 
 
@@ -21,6 +23,8 @@
       this.$teams = $('#teams');
       this.$playoffs = $('#playoffs');
       this.$debuts = $('#debuts');
+      this.$animated = $('#animated');
+      this.$rebounds = $('#rebounds');
       this.$nav = $('#nav');
       this.$navLinks = $('#nav a');
 
@@ -64,34 +68,42 @@
     },
 
 
+    /**
+    * GET DATA FROM DRIBBBLE METHOD
+    *
+    * @function
+    * @param {String} shotType - The type of shots you want to get from Dribbble (eg. 'teams', 'playoffs', etc.)
+    * @returns {Array} - Returns a list of shots for that shotType
+    * @description - For full list of shots, visit http://developer.dribbble.com/v1/shots/#list-shots
+    */
 
-    // REQUEST DATA FROM DRIBBBLE
-    getData: function(list) {
+    getData: function(shotType) {
       $.ajax({
         url: 'https://api.dribbble.com/v1/shots',
         data: {
           access_token: access_token,
-          list: list
+          list: shotType
         },
         dataType: 'jsonp'
       })
       // TAKE DATA AND STORE IN store{}
       .done(function(response) {
         // .data ACCESSES THE DATA OBJECT - CONSOLE.LOG FOR CLARITY
-        store[list] = response.data;
+        // Using bracket notation to access key in the store object to store response data
+        store[shotType] = response.data;
 
         // USE DATA AND CREATE CARDS
-        this.createCards(list);
+        this.createCards(shotType);
       }.bind(this));
     },
 
 
 
     // GET DATA FROM DRIBBBLE AND INSERT INTO CARD TEMPLATE
-    createCards: function(list) {
+    createCards: function(shotType) {
 
-      this.$cards.empty
-      var shots = store[list];
+      this.$cards.empty();
+      var shots = store[shotType];
 
       // GRAB SPECIFIC DATA FROM store{} FOR EACH SHOT
       for (var i = 0; i < shots.length; i++) {
@@ -114,6 +126,9 @@
       // TAKE HTML CARD TEMPLATE AND INSERT INTO PAGE
       this.$cards.append(card);
     }
+
+
+    // ACTIVATE IMAGE VIEWER
   }
 
   // RUN THE APP

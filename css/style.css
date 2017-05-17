@@ -90,13 +90,14 @@ nav {
     border-radius: 3px;
     box-shadow: 0 0 4px rgba(0, 0, 0, 0.12);
     display: block;
-    margin: 15px;
+    margin: 18px;
     padding: 15px;
     transition: all .4s;
-    width: 235px; }
+    width: 230px; }
     .cards-wrapper .card:hover {
       box-shadow: 0 0 8px rgba(0, 0, 0, 0.12);
-      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.24); }
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.24);
+      cursor: pointer; }
     .cards-wrapper .card img {
       display: block;
       line-height: 150px;
@@ -118,5 +119,46 @@ nav {
     color: #607D8B;
     font-size: 20px;
     text-align: center; }
+
+/* VIEWER =========================================== */
+.viewer {
+  bottom: 0;
+  display: none;
+  left: 0;
+  position: fixed;
+  right: 0;
+  top: 0; }
+  .viewer .viewer-bg {
+    background-color: black;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    opacity: .8;
+    position: fixed;
+    top: 0; }
+
+.viewer-image-content-container {
+  background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
+  border-radius: 0 10px 10px 0;
+  margin: 30px auto;
+  position: absolute;
+  width: 900px;
+  z-index: 10; }
+  .viewer-image-content-container .viewer-close-button {
+    color: rgba(0, 0, 0, 0.1);
+    float: right;
+    font-size: 40px;
+    margin: 10px 12px;
+    transition: all .3s; }
+    .viewer-image-content-container .viewer-close-button:hover {
+      color: rgba(0, 0, 0, 0.2);
+      cursor: pointer; }
+  .viewer-image-content-container img {
+    background-color: white;
+    border-radius: 3px;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.12);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.24);
+    margin: 30px;
+    padding: 20px; }
 
 /*# sourceMappingURL=style.css.map */

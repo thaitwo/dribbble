@@ -27,6 +27,10 @@
       this.$rebounds = $('#rebounds');
       this.$nav = $('#nav');
       this.$navLinks = $('#nav a');
+      this.$viewer = $('#viewer');
+      this.$imageContentContainer = $('#viewer-image-content-container');
+      this.$closeViewer = $('#viewer-close-button');
+      this.$imageContainer = $('#viewer-image-container');
 
       // FIND THE HTML FOR CARD TEMPLATE
       // CREATE A CARD TEMPLATE (WITH UNDERSCORE.JS) TO USE LATER
@@ -38,6 +42,8 @@
 
       // ACTIVATE NAVIGATION TABS
       this.switchTab();
+
+      this.initViewer();
     },
 
 
@@ -125,10 +131,43 @@
 
       // TAKE HTML CARD TEMPLATE AND INSERT INTO PAGE
       this.$cards.append(card);
+    },
+
+
+
+    // IMAGE VIEWER
+    initViewer: function() {
+      var that = this;
+
+      // OPEN VIEWER
+      this.$cards.on('click', '.card', function(event) {
+        event.preventDefault();
+        var imageLink = $(this).find('img')[0].src;
+        that.$imageContainer.empty();
+        that.$imageContainer.append('<img ' + 'src=' + imageLink + ' />');
+        that.$viewer.fadeIn();
+        that.$imageContentContainer.removeClass('slideOutLeft');
+        that.$imageContentContainer.addClass('animated slideInLeft');
+      });
+
+      // CLOSER VIEWER
+      this.$closeViewer.on('click', function(event) {
+        event.stopPropagation();
+        that.$imageContentContainer.removeClass('slideInLeft');
+        that.$imageContentContainer.addClass('slideOutLeft');
+        that.$viewer.fadeOut();
+      })
+
+      this.$imageContentContainer.on('click', function(event) {
+        event.stopPropagation();
+      })
+
+      this.$viewer.on('click', function() {
+        that.$imageContentContainer.removeClass('slideInLeft');
+        that.$imageContentContainer.addClass('slideOutLeft');
+        $(this).fadeOut();
+      })
     }
-
-
-    // ACTIVATE IMAGE VIEWER
   }
 
   // RUN THE APP

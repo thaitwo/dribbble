@@ -6,6 +6,7 @@
   <title>Dribbble Shots</title>
   <meta name="viewport" content="width=device-width">
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
   <script src="https://use.fontawesome.com/c05b0eed4c.js"></script>
 </head>
 <body>
@@ -21,21 +22,31 @@
     <div class="clear"></div>
   </nav>
 
+  <div id="viewer" class="viewer">
+    <div id="viewer-image-content-container" class="viewer-image-content-container">
+      <i id="viewer-close-button" class="fa fa-times-circle viewer-close-button" aria-hidden="true"></i>
+      <div id="viewer-image-container">
+        <!-- Viewer image inserted here -->
+      </div>
+    </div>
+    <div class="viewer-bg"></div>
+  </div>
+
   <section id="cards" class="cards-wrapper">
-      <!-- CARDS GO HERE -->
+    <!-- CARDS GO HERE -->
   </section>
 
   <!-- CARD TEMPLATE -->
   <script type="text/template" id="template_card">
     <figure class="card">
-        <img src="<%= image_url %>" alt="<%= title %>"/>
-        <figcaption>
-            <ul>
-              <li><span><%= views_count %></span>views</li>
-              <li><span><%= likes_count %></span>likes</li>
-              <li><span><%= comments_count %></span>comments</li>
-            </ul>
-        </figcaption>
+      <img src="<%= image_url %>" alt="<%= title %>"/>
+      <figcaption>
+          <ul>
+            <li><span><%= views_count %></span>views</li>
+            <li><span><%= likes_count %></span>likes</li>
+            <li><span><%= comments_count %></span>comments</li>
+          </ul>
+      </figcaption>
     </figure>
   </script>
 

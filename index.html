@@ -5,9 +5,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <title>Dribbble Shots</title>
   <meta name="viewport" content="width=device-width">
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="public/css/style.compile.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
   <script src="https://use.fontawesome.com/c05b0eed4c.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.4/lodash.min.js"></script>
 </head>
 <body>
 
@@ -23,11 +24,9 @@
   </nav>
 
   <div id="viewer" class="viewer">
-    <div id="viewer-image-content-container" class="viewer-image-content-container">
+    <div id="viewer-content-container" class="viewer-content-container">
       <i id="viewer-close-button" class="fa fa-times-circle viewer-close-button" aria-hidden="true"></i>
-      <div id="viewer-image-container">
-        <!-- Viewer image inserted here -->
-      </div>
+      <div id="viewer-image-content-container"></div>
     </div>
     <div class="viewer-bg"></div>
   </div>
@@ -39,7 +38,7 @@
   <!-- CARD TEMPLATE -->
   <script type="text/template" id="template_card">
     <figure class="card">
-      <img src="<%= image_url %>" alt="<%= title %>"/>
+      <img src="<%= image_url %>" alt="<%= title %>" data-type="<%= shot_type %>" id="<%= id %>"/>
       <figcaption>
           <ul>
             <li><span><%= views_count %></span>views</li>
@@ -50,9 +49,29 @@
     </figure>
   </script>
 
+  <!-- VIEWER CARD TEMPLATE -->
+  <script type="text/template" id="template_viewer_card">
+    <div id="viewer-image-container" class="viewer-image-container">
+      <img src="<%= imageLink %>"/>
+    </div>
+    <div id="viewer-image-des-container" class="viewer-image-des-container">
+      <h2><%= imageTitle %></h2>
+      <span>by <%= imageAuthor %></span>
+      <span>by <%= imageDescription %></span>
+      <ul>
+        <li><%= imageLikes %> likes</li>
+        <li><%= imageViews %> views</li>
+        <li><%= imageBuckets %> buckets</li>
+      </ul>
+      <ol class="tags">
+        <li><%= imageTags %></li>
+      </ol>
+    </div>
+  </script>
+
   <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
   <script src="underscore-min.js"></script>
-  <script src="dribbble.js"></script>
+  <script src="public/js/app.compile.js"></script>
   <script type="text/javascript">
     //START THE APP
     $(document).ready(function () {

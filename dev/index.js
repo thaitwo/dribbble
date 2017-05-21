@@ -1,3 +1,5 @@
+import '../scss/style.scss';
+
 (function() {
 
   const access_token = 'b0b86bea665b3d2224f6801878471ab2897740bc4eb69f5105027c87fc114908';
@@ -14,10 +16,10 @@
 
 
   var dribbbleApp = {
-    $cards: null,
-
     // START THE APP
     init: function() {
+      this.currentPage = 'teams';
+
       // FIND ELEMENTS ON HTML PAGE
       this.$cards = $('#cards');
       this.$teams = $('#teams');
@@ -28,14 +30,19 @@
       this.$nav = $('#nav');
       this.$navLinks = $('#nav a');
       this.$viewer = $('#viewer');
-      this.$imageContentContainer = $('#viewer-image-content-container');
+      this.$viewerContentContainer = $('#viewer-content-container');
+      this.$viewerImageContentContainer = $('#viewer-image-content-container');
       this.$closeViewer = $('#viewer-close-button');
       this.$imageContainer = $('#viewer-image-container');
+      this.$imageDescription = $('#viewer-image-des-container');
 
       // FIND THE HTML FOR CARD TEMPLATE
       // CREATE A CARD TEMPLATE (WITH UNDERSCORE.JS) TO USE LATER
       this.$templateCardHTML = $('#template_card').html();
       this.createCard = _.template(this.$templateCardHTML);
+
+      this.$templateViewerCardHTML = $('#template_viewer_card').html();
+      this.createViewerCardTemplate = _.template(this.$templateViewerCardHTML);
 
       // POPULATE MAIN PAGE WITH DEFAULT PHOTOS
       this.getData('teams');
@@ -113,24 +120,88 @@
 
       // GRAB SPECIFIC DATA FROM store{} FOR EACH SHOT
       for (var i = 0; i < shots.length; i++) {
-        this.createImageCard(shots[i]);
+        this.createImageCard(shots[i], shotType);
       }
     },
 
 
 
-    createImageCard: function(image) {
+    createImageCard: function(image, shotType) {
       // GET SPECIFIC DATA from store{} FOR EACH SHOT AND INSERT INTO CARD TEMPLATE
       var card = this.createCard({
         image_url: image.images.normal,
         title: image.title,
         views_count: image.views_count,
         likes_count: image.likes_count,
-        comments_count: image.comments_count
+        comments_count: image.comments_count,
+        id: image.id,
+        shot_type: shotType
       })
 
       // TAKE HTML CARD TEMPLATE AND INSERT INTO PAGE
       this.$cards.append(card);
+    },
+
+
+    // CREATE VIEWER IMAGE CARD
+    createViewerCard: function(element) {
+      var shotType = element.find('img')[0].dataset.type;
+      var shotID = element.find('img')[0].id;
+      var data = _.find(store[shotType], {id: parseInt(shotID, 10)});
+
+      // var imageLink = data.images.hidpi;
+      // var imageTitle = data.title;
+      // var imageAuthor = data.user.name;
+
+      console.log(data);
+
+      this.$viewerImageContentContainer.empty();
+
+      var viewerCard = this.createViewerCardTemplate({
+        imageLink: data.images.hidpi,
+        imageTitle: data.title,
+        imageAuthor: data.user.name,
+        imageDescription: data.description,
+        imageLikes: data.likes_count,
+        imageViews: data.views_count,
+        imageBuckets: data.buckets_count,
+        imageTags: data.tags
+      })
+
+      var output = (
+        `
+        <div id="viewer-image-container" class="viewer-image-container">
+          <img src="${imageLink}"/>
+        </div>
+        <div id="viewer-image-des-container" class="viewer-image-des-container">
+          <h2>${imageTitle}</h2>
+          <span>by ${imageAuthor}</span>
+          <span>by ${imageDescription}</span>
+          <ul>
+            <li>${imageLikes} likes</li>
+            <li>${imageViews} views</li>
+            <li>${imageBuckets} buckets</li>
+          </ul>
+          <ol class="tags">
+            <li>${imageTags}</li>
+          </ol>
+        </div>
+        `
+      )
+
+      this.$viewerImageContentContainer.append(viewerCard);
+
+
+
+      // Empty image container, insert image, open viewer
+      // this.$imageContainer.empty().append('<img ' + 'src=' + imageLink + ' />');
+      this.$viewer.fadeIn();
+      this.$viewerContentContainer.removeClass('slideOutLeft').addClass('animated slideInLeft');
+
+      // // Insert image description
+      // this.$imageDescription.empty().append(imageTitle);
+      // this.$imageDescription.append('<p>by ' + imageAuthor + '</p>');
+
     },
 
 
@@ -142,29 +213,26 @@
       // OPEN VIEWER
       this.$cards.on('click', '.card', function(event) {
         event.preventDefault();
-        var imageLink = $(this).find('img')[0].src;
-        that.$imageContainer.empty();
-        that.$imageContainer.append('<img ' + 'src=' + imageLink + ' />');
-        that.$viewer.fadeIn();
-        that.$imageContentContainer.removeClass('slideOutLeft');
-        that.$imageContentContainer.addClass('animated slideInLeft');
+        that.createViewerCard($(this));
       });
 
       // CLOSER VIEWER
+
+      // Close viewer upon click on exit icon
       this.$closeViewer.on('click', function(event) {
         event.stopPropagation();
-        that.$imageContentContainer.removeClass('slideInLeft');
-        that.$imageContentContainer.addClass('slideOutLeft');
+        that.$viewerContentContainer.removeClass('slideInLeft').addClass('slideOutLeft');
         that.$viewer.fadeOut();
       })
 
-      this.$imageContentContainer.on('click', function(event) {
+      // Disable closing of viewer upon click on image content container
+      this.$viewerContentContainer.on('click', function(event) {
         event.stopPropagation();
       })
 
+      // Close viewer upon click anywhere outside of image content container
       this.$viewer.on('click', function() {
-        that.$imageContentContainer.removeClass('slideInLeft');
-        that.$imageContentContainer.addClass('slideOutLeft');
+        that.$viewerContentContainer.removeClass('slideInLeft').addClass('slideOutLeft');
         $(this).fadeOut();
       })
     }

@@ -1,3 +1,4 @@
+// Needs to be imported for webpack to compile SCSS files
 import '../scss/style.scss';
 
 (function() {
@@ -42,6 +43,7 @@ import '../scss/style.scss';
       // ACTIVATE NAVIGATION TABS
       this.switchTab();
 
+      // Activate Viewer
       this.initViewer();
     },
 
@@ -150,6 +152,7 @@ import '../scss/style.scss';
 
       this.$viewerImageContentContainer.empty();
 
+      // Viewer card template
       var createViewerImageCardHTMLTemplate =
       `
         <div id="viewer-image-container" class="viewer-image-container">
@@ -160,26 +163,19 @@ import '../scss/style.scss';
           <div class="image-author">by ${data.user.name}</div>
           <div class="image-description">${data.description}</div>
           <ul>
-            <li>${data.likes_count} likes</li>
-            <li>${data.views_count} views</li>
-            <li>${data.buckets_count} buckets</li>
+            <li><i class="fa fa-heart" aria-hidden="true"></i><span>${data.likes_count}</span>likes</li>
+            <li><i class="fa fa-eye" aria-hidden="true"></i><span>${data.views_count}</span>views</li>
+            <li><i class="fa fa-bitbucket" aria-hidden="true"></i><span>${data.buckets_count}</span>buckets</li>
           </ul>
         </div>
       `
 
+      // Insert viewer card template into HTML
       this.$viewerImageContentContainer.append(createViewerImageCardHTMLTemplate);
 
-
-
-      // Empty image container, insert image, open viewer
-      // this.$imageContainer.empty().append('<img ' + 'src=' + imageLink + ' />');
+      // Animate viewer to slide in from left
       this.$viewer.fadeIn();
       this.$viewerContentContainer.removeClass('slideOutLeft').addClass('animated slideInLeft');
-
-      // // Insert image description
-      // this.$imageDescription.empty().append(imageTitle);
-      // this.$imageDescription.append('<p>by ' + imageAuthor + '</p>');
-
     },
 
 

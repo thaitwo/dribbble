@@ -170,7 +170,9 @@ nav {
       width: 460px; }
   .viewer-content-container .viewer-image-des-container {
     float: left;
-    padding: 80px 30px 30px 0;
+    height: 345px;
+    margin: 80px 30px 30px 0;
+    position: relative;
     width: 330px; }
     .viewer-content-container .viewer-image-des-container h2 {
       font-family: "Montserrat", sans-serif;
@@ -192,5 +194,26 @@ nav {
         font-size: 15px;
         font-weight: 300;
         line-height: 22px; }
-    .viewer-content-container .viewer-image-des-container ul li {
-      padding-bottom: 10px; }
+    .viewer-content-container .viewer-image-des-container ul {
+      bottom: 0;
+      position: absolute;
+      width: 100%; }
+      .viewer-content-container .viewer-image-des-container ul li {
+        background-color: rgba(0, 0, 0, 0.04);
+        border-radius: 3px;
+        color: rgba(0, 0, 0, 0.4);
+        font-family: "Montserrat", sans-serif;
+        font-size: 14px;
+        margin-top: 2px; }
+        .viewer-content-container .viewer-image-des-container ul li i {
+          background-color: rgba(0, 0, 0, 0.05);
+          border-radius: 3px 0 0 3px;
+          color: rgba(0, 0, 0, 0.3);
+          font-size: 18px;
+          height: 20px;
+          margin-right: 20px;
+          padding: 10px;
+          text-align: center;
+          width: 30px; }
+        .viewer-content-container .viewer-image-des-container ul li span {
+          padding-right: 10px; }

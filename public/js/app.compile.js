@@ -121,6 +121,7 @@ __webpack_require__(0);
       // ACTIVATE NAVIGATION TABS
       this.switchTab();
 
+      // Activate Viewer
       this.initViewer();
     },
 
@@ -208,18 +209,15 @@ __webpack_require__(0);
 
       this.$viewerImageContentContainer.empty();
 
-      var createViewerImageCardHTMLTemplate = '\n        <div id="viewer-image-container" class="viewer-image-container">\n          <img src="' + data.images.hidpi + '"/>\n        </div>\n        <div id="viewer-image-des-container" class="viewer-image-des-container">\n          <h2>' + data.title + '</h2>\n          <div class="image-author">by ' + data.user.name + '</div>\n          <div class="image-description">' + data.description + '</div>\n          <ul>\n            <li>' + data.likes_count + ' likes</li>\n            <li>' + data.views_count + ' views</li>\n            <li>' + data.buckets_count + ' buckets</li>\n          </ul>\n        </div>\n      ';
+      // Viewer card template
+      var createViewerImageCardHTMLTemplate = '\n        <div id="viewer-image-container" class="viewer-image-container">\n          <img src="' + data.images.hidpi + '"/>\n        </div>\n        <div id="viewer-image-des-container" class="viewer-image-des-container">\n          <h2>' + data.title + '</h2>\n          <div class="image-author">by ' + data.user.name + '</div>\n          <div class="image-description">' + data.description + '</div>\n          <ul>\n            <li><i class="fa fa-heart" aria-hidden="true"></i><span>' + data.likes_count + '</span>likes</li>\n            <li><i class="fa fa-eye" aria-hidden="true"></i><span>' + data.views_count + '</span>views</li>\n            <li><i class="fa fa-bitbucket" aria-hidden="true"></i><span>' + data.buckets_count + '</span>buckets</li>\n          </ul>\n        </div>\n      ';
 
+      // Insert viewer card template into HTML
       this.$viewerImageContentContainer.append(createViewerImageCardHTMLTemplate);
 
-      // Empty image container, insert image, open viewer
-      // this.$imageContainer.empty().append('<img ' + 'src=' + imageLink + ' />');
+      // Animate viewer to slide in from left
       this.$viewer.fadeIn();
       this.$viewerContentContainer.removeClass('slideOutLeft').addClass('animated slideInLeft');
-
-      // // Insert image description
-      // this.$imageDescription.empty().append(imageTitle);
-      // this.$imageDescription.append('<p>by ' + imageAuthor + '</p>');
     },
 
     // IMAGE VIEWER
@@ -256,7 +254,7 @@ __webpack_require__(0);
 
   // RUN THE APP
   dribbbleApp.init();
-})();
+})(); // Needs to be imported for webpack to compile SCSS files
 
 /***/ })
 /******/ ]);

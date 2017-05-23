@@ -70,15 +70,24 @@
     }
 
     .image-author {
-      color: $grey-500;
+      color: rgba(0,0,0,.3);
       font-family: $font-primary;
       font-size: 15px;
-      padding-bottom: 10px;
+      padding-bottom: 20px;
+
+      a {
+        color: $pink-400;
+        text-decoration: none;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
     }
 
     .image-description {
       font-family: $font-primary;
-      max-height: 130px;
+      max-height: 110px;
       overflow: hidden;
       margin-bottom: 40px;
       text-overflow: ellipsis;

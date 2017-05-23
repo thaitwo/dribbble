@@ -186,8 +186,13 @@ __webpack_require__(0);
       var shots = store[shotType];
 
       // GRAB SPECIFIC DATA FROM store{} FOR EACH SHOT
-      for (var i = 0; i < shots.length; i++) {
-        this.createImageCard(shots[i], shotType);
+      if (shots.length) {
+        // check to see if array has items in it
+        for (var i = 0; i < shots.length; i++) {
+          this.createImageCard(shots[i], shotType);
+        }
+      } else {
+        return 'Sorry, no images are available.';
       }
     },
 
@@ -207,10 +212,13 @@ __webpack_require__(0);
 
       console.log(data);
 
+      // If description is a falsy/null, convert to empty string
+      var imageDescription = data.description || '';
+
       this.$viewerImageContentContainer.empty();
 
       // Viewer card template
-      var createViewerImageCardHTMLTemplate = '\n        <div id="viewer-image-container" class="viewer-image-container">\n          <img src="' + data.images.hidpi + '"/>\n        </div>\n        <div id="viewer-image-des-container" class="viewer-image-des-container">\n          <h2>' + data.title + '</h2>\n          <div class="image-author">by ' + data.user.name + '</div>\n          <div class="image-description">' + data.description + '</div>\n          <ul>\n            <li><i class="fa fa-heart" aria-hidden="true"></i><span>' + data.likes_count + '</span>likes</li>\n            <li><i class="fa fa-eye" aria-hidden="true"></i><span>' + data.views_count + '</span>views</li>\n            <li><i class="fa fa-bitbucket" aria-hidden="true"></i><span>' + data.buckets_count + '</span>buckets</li>\n          </ul>\n        </div>\n      ';
+      var createViewerImageCardHTMLTemplate = '\n        <div id="viewer-image-container" class="viewer-image-container">\n          <img src="' + data.images.hidpi + '"/>\n        </div>\n        <div id="viewer-image-des-container" class="viewer-image-des-container">\n          <h2>' + data.title + '</h2>\n          <div class="image-author">by <a href="' + data.user.html_url + '" target="_blank">' + data.user.name + '</a></div>\n          <div class="image-description">' + imageDescription + '</div>\n          <ul>\n            <li><i class="fa fa-heart" aria-hidden="true"></i><span>' + data.likes_count + '</span>likes</li>\n            <li><i class="fa fa-eye" aria-hidden="true"></i><span>' + data.views_count + '</span>views</li>\n            <li><i class="fa fa-bitbucket" aria-hidden="true"></i><span>' + data.buckets_count + '</span>buckets</li>\n          </ul>\n        </div>\n      ';
 
       // Insert viewer card template into HTML
       this.$viewerImageContentContainer.append(createViewerImageCardHTMLTemplate);

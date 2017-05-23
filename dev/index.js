@@ -6,7 +6,7 @@ import '../scss/style.scss';
   const access_token = 'b0b86bea665b3d2224f6801878471ab2897740bc4eb69f5105027c87fc114908';
 
   // STORE DATA FROM AJAX REQUEST
-  var store = {
+  const store = {
     teams: null,
     playoffs: null,
     debuts: null,
@@ -16,7 +16,7 @@ import '../scss/style.scss';
 
 
 
-  var dribbbleApp = {
+  const dribbbleApp = {
     // START THE APP
     init: function() {
       this.currentPage = 'teams';
@@ -51,11 +51,11 @@ import '../scss/style.scss';
 
     // CLICK EVENTS FOR NAVIGATION TABS
     switchTab: function() {
-      var that = this;
+      const that = this;
 
       this.$nav.on('click', 'a', function() {
         // FETCH ID OF THE CLICKED LINK
-        var id = $(this).attr('id');
+        const id = $(this).attr('id');
 
         // CLEAR SELECTED CLASS AND INSERT IT INTO CLICKED LINK
         that.$navLinks.removeClass('selected');
@@ -110,11 +110,15 @@ import '../scss/style.scss';
     createCards: function(shotType) {
 
       this.$cards.empty();
-      var shots = store[shotType];
+      const shots = store[shotType];
 
       // GRAB SPECIFIC DATA FROM store{} FOR EACH SHOT
-      for (var i = 0; i < shots.length; i++) {
-        this.createImageCard(shots[i], shotType);
+      if (shots.length) {   // check to see if array has items in it
+        for (var i = 0; i < shots.length; i++) {
+          this.createImageCard(shots[i], shotType);
+        }
+      } else {
+        return 'Sorry, no images are available.'
       }
     },
 
@@ -122,7 +126,7 @@ import '../scss/style.scss';
 
     createImageCard: function(image, shotType) {
       // GET SPECIFIC DATA from store{} FOR EACH SHOT AND INSERT INTO CARD TEMPLATE
-      var card =
+      const card =
       `
         <figure class="card">
           <img src="${image.images.normal}" alt="${image.title}" data-type="${shotType}" id="${image.id}"/>
@@ -144,24 +148,27 @@ import '../scss/style.scss';
 
     // CREATE VIEWER IMAGE CARD
     createViewerCard: function(element) {
-      var shotType = element.find('img')[0].dataset.type;
-      var shotID = element.find('img')[0].id;
-      var data = _.find(store[shotType], {id: parseInt(shotID, 10)});
+      const shotType = element.find('img')[0].dataset.type;
+      const shotID = element.find('img')[0].id;
+      const data = _.find(store[shotType], {id: parseInt(shotID, 10)});
 
       console.log(data);
+
+      // If description is a falsy/null, convert to empty string
+      const imageDescription = data.description || '';
 
       this.$viewerImageContentContainer.empty();
 
       // Viewer card template
-      var createViewerImageCardHTMLTemplate =
+      const createViewerImageCardHTMLTemplate =
       `
         <div id="viewer-image-container" class="viewer-image-container">
           <img src="${data.images.hidpi}"/>
         </div>
         <div id="viewer-image-des-container" class="viewer-image-des-container">
           <h2>${data.title}</h2>
-          <div class="image-author">by ${data.user.name}</div>
-          <div class="image-description">${data.description}</div>
+          <div class="image-author">by <a href="${data.user.html_url}" target="_blank">${data.user.name}</a></div>
+          <div class="image-description">${imageDescription}</div>
           <ul>
             <li><i class="fa fa-heart" aria-hidden="true"></i><span>${data.likes_count}</span>likes</li>
             <li><i class="fa fa-eye" aria-hidden="true"></i><span>${data.views_count}</span>views</li>
@@ -182,7 +189,7 @@ import '../scss/style.scss';
 
     // IMAGE VIEWER
     initViewer: function() {
-      var that = this;
+      const that = this;
 
       // OPEN VIEWER
       this.$cards.on('click', '.card', function(event) {

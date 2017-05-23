@@ -162,7 +162,7 @@ import '../scss/style.scss';
           <ul>
             <li>${data.likes_count} likes</li>
             <li>${data.views_count} views</li>
-            <li>${data.buckets_county} buckets</li>
+            <li>${data.buckets_count} buckets</li>
           </ul>
         </div>
       `

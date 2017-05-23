@@ -65,8 +65,10 @@ nav {
     color: rgba(255, 255, 255, 0.8);
     border-radius: 3px;
     display: block;
+    font-family: "Montserrat", sans-serif;
     font-size: 14px;
-    letter-spacing: .5px;
+    font-weight: 400;
+    letter-spacing: 1px;
     line-height: 30px;
     padding: 2px 18px;
     text-decoration: none;
@@ -108,6 +110,7 @@ nav {
     .cards-wrapper .card ul li {
       color: rgba(38, 50, 56, 0.4);
       display: inline;
+      font-family: "Montserrat", sans-serif;
       font-size: 11px;
       margin-right: 5px; }
       .cards-wrapper .card ul li span {

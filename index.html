@@ -26,51 +26,18 @@
   <div id="viewer" class="viewer">
     <div id="viewer-content-container" class="viewer-content-container">
       <i id="viewer-close-button" class="fa fa-times-circle viewer-close-button" aria-hidden="true"></i>
-      <div id="viewer-image-content-container"></div>
+      <div id="viewer-image-content-container">
+        <!-- VIEWER CARD CONTENT INSERTED HERE -->
+      </div>
     </div>
     <div class="viewer-bg"></div>
   </div>
 
   <section id="cards" class="cards-wrapper">
-    <!-- CARDS GO HERE -->
+    <!-- IMAGE CARDS INSERTED HERE -->
   </section>
 
-  <!-- CARD TEMPLATE -->
-  <script type="text/template" id="template_card">
-    <figure class="card">
-      <img src="<%= image_url %>" alt="<%= title %>" data-type="<%= shot_type %>" id="<%= id %>"/>
-      <figcaption>
-          <ul>
-            <li><span><%= views_count %></span>views</li>
-            <li><span><%= likes_count %></span>likes</li>
-            <li><span><%= comments_count %></span>comments</li>
-          </ul>
-      </figcaption>
-    </figure>
-  </script>
-
-  <!-- VIEWER CARD TEMPLATE -->
-  <script type="text/template" id="template_viewer_card">
-    <div id="viewer-image-container" class="viewer-image-container">
-      <img src="<%= imageLink %>"/>
-    </div>
-    <div id="viewer-image-des-container" class="viewer-image-des-container">
-      <h2><%= imageTitle %></h2>
-      <span>by <%= imageAuthor %></span>
-      <span>by <%= imageDescription %></span>
-      <ul>
-        <li><%= imageLikes %> likes</li>
-        <li><%= imageViews %> views</li>
-        <li><%= imageBuckets %> buckets</li>
-      </ul>
-      <ol class="tags">
-        <li><%= imageTags %></li>
-      </ol>
-    </div>
-  </script>
-
   <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
-  <script src="underscore-min.js"></script>
   <script src="public/js/app.compile.js"></script>
   <script type="text/javascript">
     //START THE APP

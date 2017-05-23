@@ -115,14 +115,6 @@ __webpack_require__(0);
       this.$imageContainer = $('#viewer-image-container');
       this.$imageDescription = $('#viewer-image-des-container');
 
-      // FIND THE HTML FOR CARD TEMPLATE
-      // CREATE A CARD TEMPLATE (WITH UNDERSCORE.JS) TO USE LATER
-      this.$templateCardHTML = $('#template_card').html();
-      this.createCard = _.template(this.$templateCardHTML);
-
-      this.$templateViewerCardHTML = $('#template_viewer_card').html();
-      this.createViewerCardTemplate = _.template(this.$templateViewerCardHTML);
-
       // POPULATE MAIN PAGE WITH DEFAULT PHOTOS
       this.getData('teams');
 
@@ -200,15 +192,7 @@ __webpack_require__(0);
 
     createImageCard: function createImageCard(image, shotType) {
       // GET SPECIFIC DATA from store{} FOR EACH SHOT AND INSERT INTO CARD TEMPLATE
-      var card = this.createCard({
-        image_url: image.images.normal,
-        title: image.title,
-        views_count: image.views_count,
-        likes_count: image.likes_count,
-        comments_count: image.comments_count,
-        id: image.id,
-        shot_type: shotType
-      });
+      var card = '\n        <figure class="card">\n          <img src="' + image.images.normal + '" alt="' + image.title + '" data-type="' + shotType + '" id="' + image.id + '"/>\n          <figcaption>\n              <ul>\n                <li><span>' + image.views_count + '</span>views</li>\n                <li><span>' + image.likes_count + '</span>likes</li>\n                <li><span>' + image.comments_count + '</span>comments</li>\n              </ul>\n          </figcaption>\n        </figure>\n     ';
 
       // TAKE HTML CARD TEMPLATE AND INSERT INTO PAGE
       this.$cards.append(card);
@@ -220,26 +204,13 @@ __webpack_require__(0);
       var shotID = element.find('img')[0].id;
       var data = _.find(store[shotType], { id: parseInt(shotID, 10) });
 
-      // var imageLink = data.images.hidpi;
-      // var imageTitle = data.title;
-      // var imageAuthor = data.user.name;
-
       console.log(data);
 
       this.$viewerImageContentContainer.empty();
 
-      var viewerCard = this.createViewerCardTemplate({
-        imageLink: data.images.hidpi,
-        imageTitle: data.title,
-        imageAuthor: data.user.name,
-        imageDescription: data.description,
-        imageLikes: data.likes_count,
-        imageViews: data.views_count,
-        imageBuckets: data.buckets_count,
-        imageTags: data.tags
-      });
+      var createViewerImageCardHTMLTemplate = '\n        <div id="viewer-image-container" class="viewer-image-container">\n          <img src="' + data.images.hidpi + '"/>\n        </div>\n        <div id="viewer-image-des-container" class="viewer-image-des-container">\n          <h2>' + data.title + '</h2>\n          <span>by ' + data.user.name + '</span>\n          <span>by ' + data.description + '</span>\n          <ul>\n            <li>' + data.likes_count + ' likes</li>\n            <li>' + data.views_count + ' views</li>\n            <li>' + data.buckets_county + ' buckets</li>\n          </ul>\n        </div>\n      ';
 
-      this.$viewerImageContentContainer.append(viewerCard);
+      this.$viewerImageContentContainer.append(createViewerImageCardHTMLTemplate);
 
       // Empty image container, insert image, open viewer
       // this.$imageContainer.empty().append('<img ' + 'src=' + imageLink + ' />');

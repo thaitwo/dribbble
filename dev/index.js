@@ -139,6 +139,7 @@ import '../scss/style.scss';
     },
 
 
+
     // CREATE VIEWER IMAGE CARD
     createViewerCard: function(element) {
       var shotType = element.find('img')[0].dataset.type;
@@ -156,8 +157,8 @@ import '../scss/style.scss';
         </div>
         <div id="viewer-image-des-container" class="viewer-image-des-container">
           <h2>${data.title}</h2>
-          <span>by ${data.user.name}</span>
-          <span>by ${data.description}</span>
+          <div class="image-author">by ${data.user.name}</div>
+          <div class="image-description">${data.description}</div>
           <ul>
             <li>${data.likes_count} likes</li>
             <li>${data.views_count} views</li>

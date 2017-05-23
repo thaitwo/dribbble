@@ -208,7 +208,7 @@ __webpack_require__(0);
 
       this.$viewerImageContentContainer.empty();
 
-      var createViewerImageCardHTMLTemplate = '\n        <div id="viewer-image-container" class="viewer-image-container">\n          <img src="' + data.images.hidpi + '"/>\n        </div>\n        <div id="viewer-image-des-container" class="viewer-image-des-container">\n          <h2>' + data.title + '</h2>\n          <span>by ' + data.user.name + '</span>\n          <span>by ' + data.description + '</span>\n          <ul>\n            <li>' + data.likes_count + ' likes</li>\n            <li>' + data.views_count + ' views</li>\n            <li>' + data.buckets_county + ' buckets</li>\n          </ul>\n        </div>\n      ';
+      var createViewerImageCardHTMLTemplate = '\n        <div id="viewer-image-container" class="viewer-image-container">\n          <img src="' + data.images.hidpi + '"/>\n        </div>\n        <div id="viewer-image-des-container" class="viewer-image-des-container">\n          <h2>' + data.title + '</h2>\n          <div class="image-author">by ' + data.user.name + '</div>\n          <div class="image-description">' + data.description + '</div>\n          <ul>\n            <li>' + data.likes_count + ' likes</li>\n            <li>' + data.views_count + ' views</li>\n            <li>' + data.buckets_county + ' buckets</li>\n          </ul>\n        </div>\n      ';
 
       this.$viewerImageContentContainer.append(createViewerImageCardHTMLTemplate);
 

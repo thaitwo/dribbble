@@ -76,7 +76,7 @@ nav {
     nav ul li a:hover {
       background-color: rgba(255, 255, 255, 0.2); }
   nav ul li a.selected {
-    background: #FF7043;
+    background: #EC407A;
     color: #FFFFFF; }
 
 /* CARDS =========================================== */
@@ -170,7 +170,9 @@ nav {
       width: 460px; }
   .viewer-content-container .viewer-image-des-container {
     float: left;
-    padding: 80px 30px 30px 0;
+    height: 345px;
+    margin: 80px 30px 30px 0;
+    position: relative;
     width: 330px; }
     .viewer-content-container .viewer-image-des-container h2 {
       font-family: "Montserrat", sans-serif;
@@ -178,13 +180,18 @@ nav {
       font-weight: 600;
       padding-bottom: 10px; }
     .viewer-content-container .viewer-image-des-container .image-author {
-      color: #9E9E9E;
+      color: rgba(0, 0, 0, 0.3);
       font-family: "Montserrat", sans-serif;
       font-size: 15px;
-      padding-bottom: 10px; }
+      padding-bottom: 20px; }
+      .viewer-content-container .viewer-image-des-container .image-author a {
+        color: #EC407A;
+        text-decoration: none; }
+        .viewer-content-container .viewer-image-des-container .image-author a:hover {
+          text-decoration: underline; }
     .viewer-content-container .viewer-image-des-container .image-description {
       font-family: "Montserrat", sans-serif;
-      max-height: 130px;
+      max-height: 110px;
       overflow: hidden;
       margin-bottom: 40px;
       text-overflow: ellipsis; }
@@ -192,5 +199,26 @@ nav {
         font-size: 15px;
         font-weight: 300;
         line-height: 22px; }
-    .viewer-content-container .viewer-image-des-container ul li {
-      padding-bottom: 10px; }
+    .viewer-content-container .viewer-image-des-container ul {
+      bottom: 0;
+      position: absolute;
+      width: 100%; }
+      .viewer-content-container .viewer-image-des-container ul li {
+        background-color: rgba(0, 0, 0, 0.04);
+        border-radius: 3px;
+        color: rgba(0, 0, 0, 0.4);
+        font-family: "Montserrat", sans-serif;
+        font-size: 14px;
+        margin-top: 2px; }
+        .viewer-content-container .viewer-image-des-container ul li i {
+          background-color: rgba(0, 0, 0, 0.05);
+          border-radius: 3px 0 0 3px;
+          color: rgba(0, 0, 0, 0.3);
+          font-size: 18px;
+          height: 20px;
+          margin-right: 20px;
+          padding: 10px;
+          text-align: center;
+          width: 30px; }
+        .viewer-content-container .viewer-image-des-container ul li span {
+          padding-right: 10px; }

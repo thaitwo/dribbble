@@ -168,6 +168,12 @@ nav {
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.24);
       padding: 20px;
       width: 460px; }
+    .viewer-content-container .viewer-image-container .tags {
+      font-family: "Montserrat", sans-serif;
+      margin-top: 20px; }
+      .viewer-content-container .viewer-image-container .tags li {
+        color: rgba(0, 0, 0, 0.3);
+        font-size: 13px; }
   .viewer-content-container .viewer-image-des-container {
     float: left;
     height: 345px;

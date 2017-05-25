@@ -164,6 +164,9 @@ import '../scss/style.scss';
       `
         <div id="viewer-image-container" class="viewer-image-container">
           <img src="${data.images.hidpi}"/>
+          <ul class="tags">
+            <li>${data.tags}</li>
+          </ul>
         </div>
         <div id="viewer-image-des-container" class="viewer-image-des-container">
           <h2>${data.title}</h2>

@@ -53,6 +53,16 @@
       padding: 20px;
       width: 460px;
     }
+
+    .tags {
+      font-family: $font-primary;
+      margin-top: 20px;
+
+      li {
+        color: rgba(0,0,0,.3);
+        font-size: 13px;
+      }
+    }
   }
 
   .viewer-image-des-container {

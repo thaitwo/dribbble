@@ -150,7 +150,10 @@ import '../scss/style.scss';
     createViewerCard: function(element) {
       const shotType = element.find('img')[0].dataset.type;
       const shotID = element.find('img')[0].id;
+      // Based on clicked image, search Data Store and find exact image using shot type and ID of image
       const data = _.find(store[shotType], {id: parseInt(shotID, 10)});
+      const tags = data.tags;
+      console.log(tags);
 
       console.log(data);
 
@@ -164,6 +167,9 @@ import '../scss/style.scss';
       `
         <div id="viewer-image-container" class="viewer-image-container">
           <img src="${data.images.hidpi}"/>
+          <div class="tags-title">Tags:</div>
+          <ul id="tags" class="tags">
+          </ul>
         </div>
         <div id="viewer-image-des-container" class="viewer-image-des-container">
           <h2>${data.title}</h2>
@@ -179,6 +185,10 @@ import '../scss/style.scss';
 
       // Insert viewer card template into HTML
       this.$viewerImageContentContainer.append(createViewerImageCardHTMLTemplate);
+
+      // Loop thru tags array and insert each tag into separate <li>
+      const createTagList = tags.map((tag) => { return `<li>${tag}</li>`; })
+      $('#tags').append(createTagList);
 
       // Animate viewer to slide in from left
       this.$viewer.fadeIn();

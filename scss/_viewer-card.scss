@@ -54,13 +54,25 @@
       width: 460px;
     }
 
+    .tags-title {
+      color: rgba(0,0,0,.5);
+      font-size: 14px;
+      margin-top: 20px;
+    }
+
     .tags {
       font-family: $font-primary;
-      margin-top: 20px;
+      margin-top: 8px;
 
       li {
-        color: rgba(0,0,0,.3);
-        font-size: 13px;
+        background-color: rgba(0,0,0,.1);
+        border-radius: 2px;
+        color: rgba(0,0,0,.4);
+        display: inline-block;
+        font-size: 12px;
+        margin-bottom: 5px;
+        margin-right: 5px;
+        padding: 4px 8px;
       }
     }
   }

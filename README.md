@@ -1,3 +1,5 @@
+**Unfortunately, Dribbble now requires OAuth and no longer allows calls to get shots from other users.**
+
 # Dribbble
 
 This project uses AJAX to request the most recent images (aka shots) from Dribbble from the categories "Debuts", "Team Shots" and "Playoffs" and inserts them into the app webpage under their corresponding category tab.
@@ -6,7 +8,7 @@ This project uses AJAX to request the most recent images (aka shots) from Dribbb
 
 [View Project](https://thaitwo.github.io/dribbble/ "Ajax Dribbble")
 
-[![Ajax Dribbble](https://raw.githubusercontent.com/thaitwo/dribbble/master/assets/dribbbs.png)](https://thaitwo.github.io/dribbble/)
+[![Ajax Dribbble](https://raw.githubusercontent.com/thaitwo/dribbble/master/public/assets/dribbbs.png)](https://thaitwo.github.io/dribbble/)
 
 ## Create Dribbble Account
 
@@ -26,7 +28,7 @@ Once you've created an account, you need to register this application. To do thi
 
 Here are how my fields look like:
 
-![register-app](https://raw.githubusercontent.com/thaitwo/dribbble/master/assets/dribbble-register-app.png)
+![register-app](https://raw.githubusercontent.com/thaitwo/dribbble/master/public/assets/dribbble-register-app.png)
 
 Once you've completed, you should see at the bottom of your application page your "Client Access Token".
 
@@ -54,16 +56,16 @@ Once you've done that, click save. You're good to go!
 
 If you would like to learn more about how to use the Dribbble API [click here](http://developer.dribbble.com/v1/).
 
-## Sass Watch
+## Webpack Watch
 
-In order for the scss changes to reflect on the css file, you must run the sass watch command.
+In order for the scss changes to reflect on the css file, you must run the webpack watch command.
 
 In this case, on the command line go to the root directory. Then type in the following line.
 
 ```
-sass --watch scss:css
+webpack --watch
 ```
 
 ## Running App Locally
 
-To run the app locally, simply go to your root directory via your desktop (not command line) and double click on the **index.html** file. This should open a window on your browser displaying the app webpage.
+To run the app locally, simply go to your root directory via command line and run ``python -m SimpleHTTPServer``. Then open a browser window and type into the search bar **localhost:8000**.

@@ -86,7 +86,12 @@ nav {
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
-  padding: 40px; }
+  padding: 40px;
+  position: absolute;
+  top: 64px;
+  bottom: 0;
+  left: 0;
+  right: 0; }
   .cards-wrapper .card {
     background: #FFFFFF;
     border-radius: 3px;
@@ -122,6 +127,18 @@ nav {
     color: #607D8B;
     font-size: 20px;
     text-align: center; }
+
+.note {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-height: 500px;
+  position: absolute;
+  top: 64px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  text-align: center; }
 
 .viewer {
   bottom: 0;

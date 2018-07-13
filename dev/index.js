@@ -3,7 +3,7 @@ import '../scss/style.scss';
 
 (function() {
 
-  const access_token = 'b0b86bea665b3d2224f6801878471ab2897740bc4eb69f5105027c87fc114908';
+  const access_token = '43954a59ad6ddce58c59c0580d76717055182bb87bc08c50511aac86122dee54';
 
   // STORE DATA FROM AJAX REQUEST
   const store = {
@@ -38,7 +38,7 @@ import '../scss/style.scss';
       this.$imageDescription = $('#viewer-image-des-container');
 
       // POPULATE MAIN PAGE WITH DEFAULT PHOTOS
-      this.getData('teams');
+      this.getData('playoffs');
 
       // ACTIVATE NAVIGATION TABS
       this.switchTab();
@@ -86,19 +86,20 @@ import '../scss/style.scss';
 
     getData: function(shotType) {
       $.ajax({
-        url: 'https://api.dribbble.com/v1/shots',
+        url: 'https://api.dribbble.com/v2/user/shots',
         data: {
           access_token: access_token,
           list: shotType
         },
-        dataType: 'jsonp'
+        dataType: 'json'
       })
       // TAKE DATA AND STORE IN store{}
       .done(function(response) {
+
         // .data ACCESSES THE DATA OBJECT - CONSOLE.LOG FOR CLARITY
         // Using bracket notation to access key in the store object to store response data
         store[shotType] = response.data;
-
+        console.log(response);
         // USE DATA AND CREATE CARDS
         this.createCards(shotType);
       }.bind(this));
